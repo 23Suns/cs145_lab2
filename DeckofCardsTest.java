@@ -1,16 +1,30 @@
 // Fig. 7.13: DeckofCardsTest.java
 // Card shuffling and dealing.
+import java.util.Scanner;
 
 public class DeckofCardsTest {
-    public static void main(String[] args) {
-        Deck myDeckOfCards = new Deck();
-        myDeckOfCards.shuffle();
-        
-        for(int i = 0; i < 52; i++){
-            System.out.printf("%-19s", myDeckOfCards.dealCard());
-            if (i % 4 == 0) {
-                System.out.println();
+    public static void main(String args[]) {
+        Deck deck = new Deck();
+        deck.shuffle();
+
+        String input = "";
+
+        Scanner scanner = new Scanner(System.in);
+
+        while(true) { 
+            
+            Hand hand = new Hand(deck);
+            
+            hand.printHand();
+            System.out.println();
+            
+            System.out.println("Get new hand? (y/n): ");
+            
+            input = scanner.nextLine();
+            if(!input.equalsIgnoreCase("y")) {
+                break;
             }
         }
+
     }
 }

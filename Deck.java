@@ -4,8 +4,6 @@
 import java.security.SecureRandom;
 
 public class Deck {
-    // random number generator
-    private static final SecureRandom randomNumbers = new SecureRandom();
     private static final int NUMBER_OF_CARDS = 52; // constant # of cards
     
     private Card[] deck = new Card[NUMBER_OF_CARDS]; // Card references
@@ -24,13 +22,16 @@ public class Deck {
     public void shuffle() {
     //next call to method dealCard should start at deck[0] again
         currentCard = 0;
-        for(int i = 0; i < deck.length; i++) {
-                int randomIndex = randomNumbers.nextInt(deck.length - 1) + i;
 
-                //swap current Card with randomly selected Card
-                Card temp = deck[i];
-                deck[i] = deck[randomIndex];
-                deck[randomIndex] = temp;
+        for(int i = deck.length - 1; i >= 0; i--) {
+        
+            // Calculate bound as difference between length and i
+            int j = new SecureRandom().nextInt(deck.length - i);
+            
+            //swap current Card with randomly selected Card
+            Card temp = deck[i];
+            deck[i] = deck[j];
+            deck[j] = temp;
         }
     }
 
