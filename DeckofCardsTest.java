@@ -23,8 +23,10 @@ public class DeckofCardsTest {
             input = scanner.nextLine();
             if(!input.equalsIgnoreCase("y")) {
                 break;
+            } else  if(deck.dealCard() == null){
+                System.out.println("No More Cards. Thanks for playing!");
+                break;
             }
         }
-
     }
 }

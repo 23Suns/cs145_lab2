@@ -19,13 +19,18 @@ public class Hand {
 
     public void printHand() {
         int score = 0;
-
-        for (Card c : getCards()) {
-            System.out.print("[" + c.toString() + "] ");
-            score += c.getFaceValue();
-        }
+        
         System.out.println();
-
-        System.out.print("Total value: " + score);
+        
+        for (Card c : getCards()) {
+            if(c != null) {
+                System.out.print("[" + c.toString() + "] ");
+                score += c.getFaceValue();
+            } else {
+                c = null;
+                break;
+            }
+        }
+        System.out.println("Total value: " + score);
     }
 }
